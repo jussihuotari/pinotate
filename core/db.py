@@ -99,8 +99,8 @@ class IBooksDispatcher(object):
         titles = []
         conn = sqlite3.connect(lib_db)
         c = conn.cursor()
-        for row in c.execute("SELECT ZTITLE FROM ZBKLIBRARYASSET WHERE ZTITLE <> '' AND ZTITLE <> 'none'"):
-            titles.append(row[0])
+        for row in c.execute("SELECT ZAUTHOR, ZTITLE FROM ZBKLIBRARYASSET WHERE ZTITLE <> '' AND ZTITLE <> 'none'"):
+            titles.append((row[0], row[1]))
         conn.close()
         return titles
 
